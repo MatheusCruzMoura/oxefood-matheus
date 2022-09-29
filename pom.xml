@@ -11,8 +11,9 @@
 	<groupId>br.com.ifpe</groupId>
 	<artifactId>oxefood-matheus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>oxefood-matheus</name>
-	<description>Oxe Food - Sistema Criado na Disciplina de Web 4</description>
+	<description>Oxe Food - Sistema Criado na Disciplina de Web4</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -62,6 +63,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
