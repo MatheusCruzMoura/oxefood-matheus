@@ -26,7 +26,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoriaProduto extends EntidadeAuditavel {
 
-	private static final long serialVersionUID = -1313945132507416245L;
+	private static final long serialVersionUID = -5147277828565528035L;
 
 	public static final String LABEL = "Categoria de Produto";
 
