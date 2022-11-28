@@ -16,15 +16,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CategoriaProdutoRequest {
 
-	private String chaveEmpresa;
+    private String chaveEmpresa;
 
-	@Size(max = 1000)
-	@NotNull
-	@NotEmpty
-	private String descricao;
+    @Size(max = 1000)
+    @NotNull
+    @NotEmpty
+    private String descricao;
 
-	public CategoriaProduto buildCategoriaProduto() {
+    public CategoriaProduto buildCategoriaProduto() {
 
-		return CategoriaProduto.builder().chaveEmpresa(chaveEmpresa).descricao(descricao).build();
-	}
+	return CategoriaProduto.builder()
+		.chaveEmpresa(chaveEmpresa)
+		.descricao(descricao)
+		.build();
+    }
 }
+

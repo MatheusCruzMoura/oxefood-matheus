@@ -19,26 +19,27 @@ import lombok.Setter;
 @MappedSuperclass
 public abstract class EntidadeAuditavel extends EntidadeNegocio {
 
-	private static final long serialVersionUID = -8779559168633155010L;
+    private static final long serialVersionUID = -4607409190209044950L;
 
 	@JsonIgnore
-	@Version
-	private Long versao;
+    @Version
+    private Long versao;
 
-	@JsonIgnore
-	@CreatedDate
-	private LocalDate dataCriacao;
+    @JsonIgnore
+    @CreatedDate
+    private LocalDate dataCriacao;
 
-	@JsonIgnore
-	@LastModifiedDate
-	private LocalDate dataUltimaModificacao;
+    @JsonIgnore
+    @LastModifiedDate
+    private LocalDate dataUltimaModificacao;
 
-	@JsonIgnore
-	@Column
-	private Long criadoPor; // Id do usuário que o criou
+    @JsonIgnore
+    @Column
+    private Long criadoPor; // Id do usuário que o criou
 
-	@JsonIgnore
-	@Column
-	private Long ultimaModificacaoPor; // Id do usuário que fez a última alteração
+    @JsonIgnore
+    @Column
+    private Long ultimaModificacaoPor; // Id do usuário que fez a última alteração
 
 }
+

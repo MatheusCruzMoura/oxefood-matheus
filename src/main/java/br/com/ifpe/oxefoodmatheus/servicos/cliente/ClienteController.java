@@ -18,15 +18,15 @@ import br.com.ifpe.oxefoodmatheus.util.entity.GenericController;
 @RequestMapping("/api/cliente")
 public class ClienteController extends GenericController {
 
-	@Autowired
-	private ClienteService clienteService;
+    @Autowired
+    private ClienteService clienteService;
 
 	@PostMapping
-	public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest request) {
+    public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest request) {
 
 		Cliente clienteRequisicao = request.buildCliente();
 		Cliente clienteSalvo = clienteService.save(clienteRequisicao);
 		return new ResponseEntity<Cliente>(clienteSalvo, HttpStatus.CREATED);
-	}
+    }
 
 }

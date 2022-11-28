@@ -12,15 +12,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ClienteRequest {
 
-	private String chaveEmpresa;
-	private String nome;
-	private String cpf;
-	private String fone;
-	private String foneAlternativo;
+    private String chaveEmpresa;
+    
+    private String nome;
+    
+    private String cpf;
+    
+    private String fone;
+    
+    private String foneAlternativo;
+    
+    public Cliente buildCliente() {
 
-	public Cliente buildCliente() {
-
-		return Cliente.builder().chaveEmpresa(chaveEmpresa).nome(nome).cpf(cpf).fone(fone)
-				.foneAlternativo(foneAlternativo).build();
-	}
+	return Cliente.builder()
+		.chaveEmpresa(chaveEmpresa)
+		.nome(nome)
+		.cpf(cpf)
+		.fone(fone)
+		.foneAlternativo(foneAlternativo)
+		.build();
+    }
+    
 }

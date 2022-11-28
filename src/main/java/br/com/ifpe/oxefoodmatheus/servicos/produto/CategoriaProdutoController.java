@@ -18,15 +18,16 @@ import br.com.ifpe.oxefoodmatheus.util.entity.GenericController;
 @RequestMapping("/api/categoriaproduto")
 public class CategoriaProdutoController extends GenericController {
 
-	@Autowired
-	private CategoriaProdutoService categoriaProdutoService;
+    @Autowired
+    private CategoriaProdutoService categoriaProdutoService;
 
-	@PostMapping
-	public ResponseEntity<CategoriaProduto> save(@RequestBody @Valid CategoriaProdutoRequest request) {
+    @PostMapping
+    public ResponseEntity<CategoriaProduto> save(@RequestBody @Valid CategoriaProdutoRequest request) {
 
-		validarPreenchimentoChave(request.getChaveEmpresa());
-		CategoriaProduto categoriaProduto = categoriaProdutoService.save(request.buildCategoriaProduto());
-		return new ResponseEntity<CategoriaProduto>(categoriaProduto, HttpStatus.CREATED);
-	}
+	validarPreenchimentoChave(request.getChaveEmpresa());
+	CategoriaProduto categoriaProduto = categoriaProdutoService.save(request.buildCategoriaProduto());
+	return new ResponseEntity<CategoriaProduto>(categoriaProduto, HttpStatus.CREATED);
+    }
 
 }
+

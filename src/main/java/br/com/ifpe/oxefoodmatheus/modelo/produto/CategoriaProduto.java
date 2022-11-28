@@ -25,21 +25,22 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoriaProduto extends EntidadeAuditavel {
-
-	private static final long serialVersionUID = -5147277828565528035L;
+    
+    private static final long serialVersionUID = -5147277828565528035L;
 
 	public static final String LABEL = "Categoria de Produto";
 
-	@JsonIgnore
-	@NotNull
-	@Column(nullable = false)
-	private String chaveEmpresa;
+    @JsonIgnore
+    @NotNull
+    @Column(nullable = false)
+    private String chaveEmpresa;
 
-	@NotNull
-	@Column(nullable = false, length = 100)
-	private String descricao;
+    @NotNull
+    @Column(nullable = false, length = 100)
+    private String descricao;
 
-	public void updateFrom(CategoriaProduto param) {
-		this.setDescricao(param.getDescricao());
-	}
+    public void updateFrom(CategoriaProduto param) {
+    	this.setDescricao(param.getDescricao());
+    }
 }
+
