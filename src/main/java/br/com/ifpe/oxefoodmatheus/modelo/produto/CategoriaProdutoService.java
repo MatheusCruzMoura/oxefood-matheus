@@ -39,7 +39,28 @@ public class CategoriaProdutoService extends GenericService {
 
     	return repository.findByChaveEmpresaOrderByDescricaoAsc(chaveEmpresa);
     }
+    
+    @Transactional
+    public void update(Long id, CategoriaProduto categoriaProdutoAlterado) {
 
+		validarCategoriaProdutoExistente(categoriaProdutoAlterado, id);
+		
+		CategoriaProduto categoria = this.obterCategoriaPorID(id);
+		categoria.updateFrom(categoriaProdutoAlterado);
+		super.preencherCamposAuditoria(categoria);
+	
+		repository.save(categoria);
+    }
+    
+    @Transactional
+    public void delete(Long id) {
+
+		CategoriaProduto categoria = this.obterCategoriaPorID(id);
+		categoria.setHabilitado(Boolean.FALSE);
+		super.preencherCamposAuditoria(categoria);
+	
+		repository.save(categoria);
+    }
 
     private void validarCategoriaProdutoExistente(CategoriaProduto categoriaParam, Long id) {
 
