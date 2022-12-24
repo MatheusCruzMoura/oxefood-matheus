@@ -4,12 +4,13 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.Where;
 
+import br.com.ifpe.oxefoodmatheus.modelo.acesso.Usuario;
 import br.com.ifpe.oxefoodmatheus.util.entity.EntidadeAuditavel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,18 +33,16 @@ public class Cliente extends EntidadeAuditavel {
 	@Column(nullable = false)
 	private String chaveEmpresa;
 
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Usuario usuario;
+
 	@Column
 	private String nome;
 
 	@Column
 	private String cpf;
-	
-	@Column
-	private String email;
 
-	@Column
-	private String password;
-	
 	@Column
 	private String fone;
 

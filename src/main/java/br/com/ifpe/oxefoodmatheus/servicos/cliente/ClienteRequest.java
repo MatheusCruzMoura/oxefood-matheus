@@ -1,6 +1,7 @@
 package br.com.ifpe.oxefoodmatheus.servicos.cliente;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,6 +12,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.ifpe.oxefoodmatheus.modelo.acesso.Usuario;
 import br.com.ifpe.oxefoodmatheus.modelo.cliente.Cliente;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -54,8 +56,24 @@ public class ClienteRequest {
 
 	public Cliente buildCliente() {
 
-		return Cliente.builder().chaveEmpresa(chaveEmpresa).nome(nome).email(email).password(password).cpf(cpf)
-				.fone(fone).foneAlternativo(foneAlternativo).dataNacimento(dataNacimento).build();
-	}
+		return Cliente.builder()
+			.chaveEmpresa(chaveEmpresa)
+			.usuario(buildUsuario())
+			.nome(nome)
+			.cpf(cpf)
+			.fone(fone)
+			.foneAlternativo(foneAlternativo)
+			.build();
+	    }
+	    
+	    public Usuario buildUsuario() {
+		
+		return Usuario.builder()
+			.username(email)
+			.password(password)
+			.roles(Arrays.asList(Usuario.ROLE_CLIENTE))
+			.build();
+	    }
+
 
 }
