@@ -1,9 +1,12 @@
 package br.com.ifpe.oxefoodmatheus.modelo.cliente;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.Where;
 
@@ -24,30 +27,39 @@ import lombok.Setter;
 @Where(clause = "habilitado = true")
 public class Cliente extends EntidadeAuditavel {
 
-    private static final long serialVersionUID = -6085010525880815346L;
+	private static final long serialVersionUID = -6085010525880815346L;
 
-	@NotNull
-    @Column(nullable = false)
-    private String chaveEmpresa;
-    
-    @Column
-    private String nome;
-    
-    @Column
-    private String cpf;
-    
-    @Column
-    private String fone;
-    
-    @Column
-    private String foneAlternativo;
-    
-    public void updateFrom(Cliente param) {
+	@Column(nullable = false)
+	private String chaveEmpresa;
+
+	@Column
+	private String nome;
+
+	@Column
+	private String cpf;
 	
+	@Column
+	private String email;
+
+	@Column
+	private String password;
+	
+	@Column
+	private String fone;
+
+	@Column
+	private String foneAlternativo;
+
+	@Column
+	private LocalDate dataNacimento;
+
+	public void updateFrom(Cliente param) {
+
 		this.setChaveEmpresa(param.getChaveEmpresa());
 		this.setNome(param.getNome());
 		this.setCpf(param.getCpf());
 		this.setFone(param.getFone());
 		this.setFoneAlternativo(param.getFoneAlternativo());
-    }
+		this.setDataNacimento(param.getDataNacimento());
+	}
 }
