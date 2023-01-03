@@ -11,7 +11,7 @@ import br.com.ifpe.oxefoodmatheus.util.entity.GenericService;
 
 @Service
 public class CompradorService extends GenericService {
-	
+
 	@Autowired
     private CompradorRepository repository;
 
@@ -21,7 +21,7 @@ public class CompradorService extends GenericService {
     	super.preencherCamposNegocio(comprador);
 		return repository.save(comprador);
     }
-    
+
     @Transactional
     public Comprador obterCompradorPorID(Long id) {
     	return repository.findById(id).get();
@@ -32,25 +32,25 @@ public class CompradorService extends GenericService {
 
     	return repository.findAll();
     }
-    
+
     @Transactional
     public Comprador update(Long id, Comprador compradorAlterado) {
-	
+
     	Comprador comprador = this.obterCompradorPorID(id);
     	comprador.updateFrom(compradorAlterado);
 		super.preencherCamposNegocio(comprador);
-	
+
 		return repository.save(comprador);
     }
-    
+
     @Transactional
     public void delete(Long id) {
 
     	Comprador comprador = this.obterCompradorPorID(id);
     	comprador.setHabilitado(Boolean.FALSE);
 		super.preencherCamposNegocio(comprador);
-	
+
 		repository.save(comprador);
     }
-	
+
 }

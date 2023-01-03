@@ -11,17 +11,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FornecedorRequest {
-	
+
 	private String nome;
-    
+
     private String endereco;
-    
+
     private String logoMarca;
-    
+
     private double valorMercado;
-    
+
     private String paginaWeb;
-    
+
     private String contatoVendedor;
 
     public Fornecedor buildFornecedor() {

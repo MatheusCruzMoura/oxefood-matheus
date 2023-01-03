@@ -65,9 +65,9 @@ public class ClienteRequest {
 			.foneAlternativo(foneAlternativo)
 			.build();
 	    }
-	    
+
 	    public Usuario buildUsuario() {
-		
+
 		return Usuario.builder()
 			.username(email)
 			.password(password)

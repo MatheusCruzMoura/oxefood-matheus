@@ -46,18 +46,31 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		http
-				.httpBasic().disable().csrf().disable().cors().and().sessionManagement()
+		http.httpBasic().disable().csrf().disable().cors().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
 				.authenticationEntryPoint(authenticationEntryPoint).and().authorizeRequests()
 
-				.antMatchers(AUTH_WHITELIST).permitAll()
-			 	.antMatchers(HttpMethod.POST, "/api/cliente").permitAll()
-			 	.antMatchers(HttpMethod.POST, "/api/login/signin").permitAll()
+				.antMatchers(AUTH_WHITELIST).permitAll().antMatchers(HttpMethod.POST, "/api/cliente").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/empresa").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/login/signin").permitAll()
 
-				.anyRequest().hasAnyAuthority(Usuario.ROLE_CLIENTE, Usuario.ROLE_EMPRESA)
-				.and().addFilterBefore(
-						new JwtTokenAuthenticationFilter(jwtTokenProvider),
+				// Configuração de autorizações de acesso para Produto
+
+				.antMatchers(HttpMethod.POST, "/api/categoriaproduto")
+				.hasAnyAuthority(Usuario.ROLE_EMPRESA_ADMIN, Usuario.ROLE_EMPRESA_USER) // Cadastro de produto
+				.antMatchers(HttpMethod.PUT, "/api/categoriaproduto/*")
+				.hasAnyAuthority(Usuario.ROLE_EMPRESA_ADMIN, Usuario.ROLE_EMPRESA_USER) // Alteração de produto
+				.antMatchers(HttpMethod.DELETE, "/api/categoriaproduto/*").hasAnyAuthority(Usuario.ROLE_EMPRESA_ADMIN) // Exclusão
+																														// de
+																														// produto
+				.antMatchers(HttpMethod.GET, "/api/categoriaproduto/")
+				.hasAnyAuthority(Usuario.ROLE_CLIENTE, Usuario.ROLE_EMPRESA_ADMIN, Usuario.ROLE_EMPRESA_USER) // Consulta
+																												// de
+																												// produto
+
+				.anyRequest()
+				.hasAnyAuthority(Usuario.ROLE_CLIENTE, Usuario.ROLE_EMPRESA_ADMIN, Usuario.ROLE_EMPRESA_USER).and()
+				.addFilterBefore(new JwtTokenAuthenticationFilter(jwtTokenProvider),
 						UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();

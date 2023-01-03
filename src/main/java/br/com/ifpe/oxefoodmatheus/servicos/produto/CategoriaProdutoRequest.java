@@ -18,7 +18,7 @@ public class CategoriaProdutoRequest {
 
     private String chaveEmpresa;
 
-    @Size(max = 1000)
+    @Size(max = 100)
     @NotNull
     @NotEmpty
     private String descricao;

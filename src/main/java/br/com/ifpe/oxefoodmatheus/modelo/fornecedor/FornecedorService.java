@@ -21,7 +21,7 @@ public class FornecedorService extends GenericService {
     	super.preencherCamposNegocio(fornecedor);
 		return repository.save(fornecedor);
     }
-    
+
     @Transactional
     public Fornecedor obterFornecedorPorID(Long id) {
     	return repository.findById(id).get();
@@ -32,24 +32,24 @@ public class FornecedorService extends GenericService {
 
     	return repository.findAll();
     }
-    
+
     @Transactional
     public Fornecedor update(Long id, Fornecedor fornecedorAlterado) {
-	
+
     	Fornecedor fornecedor = this.obterFornecedorPorID(id);
     	fornecedor.updateFrom(fornecedorAlterado);
 		super.preencherCamposNegocio(fornecedor);
-	
+
 		return repository.save(fornecedor);
     }
-    
+
     @Transactional
     public void delete(Long id) {
 
     	Fornecedor fornecedor = this.obterFornecedorPorID(id);
     	fornecedor.setHabilitado(Boolean.FALSE);
 		super.preencherCamposNegocio(fornecedor);
-	
+
 		repository.save(fornecedor);
     }
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class EntityAlreadyExistsException extends RuntimeException {
 
     private static final long serialVersionUID = -4067366924562414602L;
-    
+
 	private static final String MSG_ENTITY_ALREADY_EXIST = "Já existe um(a) %s cadastrado(a) com esse(a) %s.";
 
     public EntityAlreadyExistsException(String label, String field) {

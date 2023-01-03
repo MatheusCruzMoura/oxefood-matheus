@@ -35,7 +35,7 @@ public class ClienteController extends GenericController {
 
 		Cliente clienteRequisicao = request.buildCliente();
 		Cliente clienteSalvo = clienteService.save(clienteRequisicao);
-		return new ResponseEntity<Cliente>(clienteSalvo, HttpStatus.CREATED);
+		return new ResponseEntity<>(clienteSalvo, HttpStatus.CREATED);
 	}
 
 	@ApiOperation(value = "Serviço responsável por obter um cliente referente ao Id passado na URL.")

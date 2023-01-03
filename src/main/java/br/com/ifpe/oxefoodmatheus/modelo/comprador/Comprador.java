@@ -23,34 +23,34 @@ import lombok.Setter;
 @Table(name = "Comprador")
 @Where(clause = "habilitado = true")
 public class Comprador extends EntidadeNegocio {
-	
+
 	private static final long serialVersionUID = 3034904862079787465L;
 
 	@NotNull
     @Column(nullable = false)
     private String nome;
-    
+
     @Column
     private String enderecoComercial;
-    
+
     @Column
     private String enderecoResidencial;
-    
+
     @Column
     private double comissao;
-    
+
     @Column
     private boolean trabahoHomeOffice;
-    
+
     @Column
     private int qtdComprasMediasMes;
-    
+
     @Column
     private String regiaoAtuacao;
-    
-    
+
+
     public void updateFrom(Comprador param) {
-	
+
 		this.setNome(param.getNome());
 		this.setEnderecoComercial(param.getEnderecoComercial());
 		this.setEnderecoResidencial(param.getEnderecoResidencial());
@@ -59,6 +59,6 @@ public class Comprador extends EntidadeNegocio {
 		this.setQtdComprasMediasMes(param.getQtdComprasMediasMes());
 		this.setRegiaoAtuacao(param.getRegiaoAtuacao());
     }
-	
+
 
 }

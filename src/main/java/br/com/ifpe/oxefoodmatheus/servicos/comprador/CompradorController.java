@@ -26,10 +26,10 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/api/comprador")
 public class CompradorController extends GenericController {
-	
+
 	@Autowired
 	private CompradorService compradorService;
-	
+
 	@ApiOperation(value = "Serviço responsável por salvar um comprador no sistema.")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Salva o comprador."),
@@ -42,10 +42,10 @@ public class CompradorController extends GenericController {
 	public ResponseEntity<Comprador> save(@RequestBody @Valid CompradorRequest request) {
 		Comprador compradorRequisicao = request.buildComprador();
 		Comprador compradorSalvo = compradorService.save(compradorRequisicao);
-		return new ResponseEntity<Comprador>(compradorSalvo, HttpStatus.CREATED);
+		return new ResponseEntity<>(compradorSalvo, HttpStatus.CREATED);
 	}
-	
-	
+
+
 	@ApiOperation(value = "Serviço responsável por obter um comprador referente ao Id passado na URL.")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Retorna o comprador."),
@@ -59,7 +59,7 @@ public class CompradorController extends GenericController {
 
 		return compradorService.obterCompradorPorID(id);
     }
-	
+
 	@ApiOperation(value = "Serviço responsável por listar todos os compradores do sistema.")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Retorna toodos os compradores."),
@@ -73,7 +73,7 @@ public class CompradorController extends GenericController {
 
 		return compradorService.listarTodos();
     }
-	
+
     @ApiOperation(value = "Serviço responsável por atualizar as informações do comprador referente ao Id passado na URL.")
     @ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Altera os dados o comprador."),
@@ -84,11 +84,11 @@ public class CompradorController extends GenericController {
 	})
     @PutMapping("/{id}")
     public ResponseEntity<Comprador> update(@PathVariable("id") Long id, @RequestBody CompradorRequest request) {
-		
+
 		Comprador compradorAlterado = compradorService.update(id, request.buildComprador());
-		return new ResponseEntity<Comprador>(compradorAlterado, HttpStatus.OK);
+		return new ResponseEntity<>(compradorAlterado, HttpStatus.OK);
     }
-	
+
     @ApiOperation(value = "Serviço responsável por remover(exclusão lógica) um comprador do sistema referente ao Id passado na URL.")
     @ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Remove o comprador."),
@@ -103,5 +103,5 @@ public class CompradorController extends GenericController {
 		compradorService.delete(id);
 		return ResponseEntity.noContent().build();
     }
-	
+
 }

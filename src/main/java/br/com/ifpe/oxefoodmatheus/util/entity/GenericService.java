@@ -20,7 +20,7 @@ public abstract class GenericService {
 			entity.setVersao(entity.getVersao() + 1);
 		}
 	}
-	
+
 	public void preencherCamposNegocio(EntidadeNegocio entity) {
 
 		if (entity.getId() == null) {
